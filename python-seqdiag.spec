@@ -9,8 +9,8 @@ Release:	0.1
 License:	Apache 2.0
 Group:		Development/Languages
 URL:		http://blockdiag.com/en/seqdiag/index.html
-Source0:	https://bitbucket.org/tk0miya/%{module}/get/tip.tar.gz
-# Source0-md5:	58c9060a5ce28c8a99c7496ada1c4cbb
+Source0:	http://pypi.python.org/packages/source/s/%{module}/%{module}-%{version}.tar.gz
+# Source0-md5:	d13415c44193ca6e3c6409dbb73cd693
 #BuildRequires:	python < 3.0
 BuildRequires:	python-funcparserlib >= 0.3.4
 BuildRequires:	rpmbuild(macros) >= 1.219
@@ -29,7 +29,7 @@ Features
 You can get some examples and generated images on blockdiag.com .
 
 %prep
-%setup -q -n tk0miya-%{module}-tip
+%setup -q -n %{module}-%{version}
 %{__sed} -i -e 's/^from ez_setup/#from ez_setup/' setup.py
 %{__sed} -i -e 's/^use_setuptools()/#use_setuptools()/' setup.py
 
