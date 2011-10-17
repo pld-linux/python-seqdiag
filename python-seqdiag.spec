@@ -1,12 +1,9 @@
-#
-# Conditional build:
-
 %define 	module	seqdiag
-Summary:	seqkdiag generate sequence-diagram image file from spec-text file.
+Summary:	seqkdiag generate sequence-diagram image file from spec-text file
 Name:		python-%module
 Version:	0.4.2
 Release:	0.1
-License:	Apache 2.0
+License:	Apache v2.0
 Group:		Development/Languages
 URL:		http://blockdiag.com/en/seqdiag/index.html
 Source0:	http://pypi.python.org/packages/source/s/%{module}/%{module}-%{version}.tar.gz
@@ -20,13 +17,11 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-seqdiag generate sequence-diagram image file from spec-text file.
-Features
+seqdiag generates sequence-diagram image file from spec-text files.
 
-    Generate sequence-diagram from dot like text (basic feature).
-    Multilingualization for node-label (utf-8 only).
-
-You can get some examples and generated images on blockdiag.com .
+Features:
+- Generate sequence-diagram from dot like text (basic feature).
+- Multilingualization for node-label (utf-8 only).
 
 %prep
 %setup -q -n %{module}-%{version}
@@ -45,17 +40,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %py_postclean
 
-rm -rf $RPM_BUILD_ROOT%{py_sitescriptdir}/%{module}/tests
-rm -rf $RPM_BUILD_ROOT%{py_sitescriptdir}/tests
+%{__rm} -r $RPM_BUILD_ROOT%{py_sitescriptdir}/%{module}/tests
+%{__rm} -r $RPM_BUILD_ROOT%{py_sitescriptdir}/tests
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-#%doc README
-%attr(755,root,root)%{_bindir}/seqdiag
+%attr(755,root,root) %{_bindir}/seqdiag
 %{py_sitescriptdir}/%{module}
 %if "%{py_ver}" > "2.4"
-%{py_sitescriptdir}/%{module}-%{version}-*.egg-info/
+%{py_sitescriptdir}/%{module}-%{version}-*.egg-info
 %endif
