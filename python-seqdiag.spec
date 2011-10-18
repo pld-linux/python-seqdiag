@@ -2,7 +2,7 @@
 Summary:	seqkdiag generate sequence-diagram image file from spec-text file
 Name:		python-%module
 Version:	0.4.2
-Release:	0.1
+Release:	0.2
 License:	Apache v2.0
 Group:		Development/Languages
 URL:		http://blockdiag.com/en/seqdiag/index.html
@@ -12,7 +12,7 @@ Source0:	http://pypi.python.org/packages/source/s/%{module}/%{module}-%{version}
 BuildRequires:	python-funcparserlib >= 0.3.4
 BuildRequires:	rpmbuild(macros) >= 1.219
 BuildRequires:	sed >= 4.0
-#Requires:	python-django
+Requires:	python-blockdiag
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -37,11 +37,6 @@ rm -rf $RPM_BUILD_ROOT
 	--optimize=2 \
 	--skip-build \
 	--root $RPM_BUILD_ROOT
-
-%py_postclean
-
-%{__rm} -r $RPM_BUILD_ROOT%{py_sitescriptdir}/%{module}/tests
-%{__rm} -r $RPM_BUILD_ROOT%{py_sitescriptdir}/tests
 
 %clean
 rm -rf $RPM_BUILD_ROOT
