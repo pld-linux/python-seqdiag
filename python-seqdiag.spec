@@ -1,6 +1,12 @@
+# TODO
+# - unpackaged files
+#   /usr/share/python2.7/site-packages/seqdiag_sphinxhelper.pyc
+#   /usr/share/python2.7/site-packages/seqdiag_sphinxhelper.pyo
+#   /usr/share/python2.7/site-packages/sphinxcontrib_seqdiag.pyc
+#   /usr/share/python2.7/site-packages/sphinxcontrib_seqdiag.pyo
 %define 	module	seqdiag
 Summary:	seqkdiag generate sequence-diagram image file from spec-text file
-Name:		python-%module
+Name:		python-%{module}
 Version:	0.4.2
 Release:	0.2
 License:	Apache v2.0
@@ -8,8 +14,6 @@ Group:		Development/Languages
 URL:		http://blockdiag.com/en/seqdiag/index.html
 Source0:	http://pypi.python.org/packages/source/s/%{module}/%{module}-%{version}.tar.gz
 # Source0-md5:	d13415c44193ca6e3c6409dbb73cd693
-#BuildRequires:	python < 3.0
-BuildRequires:	python-funcparserlib >= 0.3.4
 BuildRequires:	rpmbuild(macros) >= 1.219
 BuildRequires:	sed >= 4.0
 Requires:	python-blockdiag
@@ -38,13 +42,17 @@ rm -rf $RPM_BUILD_ROOT
 	--skip-build \
 	--root $RPM_BUILD_ROOT
 
+%{__rm} -r $RPM_BUILD_ROOT%{py_sitescriptdir}/%{module}/tests
+%py_postclean
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/seqdiag
-%{py_sitescriptdir}/%{module}
+%dir %{py_sitescriptdir}/%{module}
+%{py_sitescriptdir}/%{module}/*.py[co]
 %if "%{py_ver}" > "2.4"
 %{py_sitescriptdir}/%{module}-%{version}-*.egg-info
 %endif
