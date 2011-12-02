@@ -1,16 +1,16 @@
 %define 	module	seqdiag
 Summary:	seqkdiag generate sequence-diagram image file from spec-text file
 Name:		python-%{module}
-Version:	0.4.2
+Version:	0.7.1
 Release:	1
 License:	Apache v2.0
 Group:		Development/Languages
 URL:		http://blockdiag.com/en/seqdiag/index.html
 Source0:	http://pypi.python.org/packages/source/s/%{module}/%{module}-%{version}.tar.gz
-# Source0-md5:	d13415c44193ca6e3c6409dbb73cd693
+# Source0-md5:	81e0a551675354b6a511f5f23b661dce
 BuildRequires:	rpmbuild(macros) >= 1.219
 BuildRequires:	sed >= 4.0
-Requires:	python-blockdiag
+Requires:	python-blockdiag >= 1.1.0
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -38,7 +38,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__rm} -r $RPM_BUILD_ROOT%{py_sitescriptdir}/%{module}/tests
 %{__rm} $RPM_BUILD_ROOT%{py_sitescriptdir}/%{module}_sphinxhelper.py[co]
-%{__rm} $RPM_BUILD_ROOT%{py_sitescriptdir}/sphinxcontrib_%{module}.py[co]
 
 install -d $RPM_BUILD_ROOT%{_mandir}/man1
 cp -p %{module}.1 $RPM_BUILD_ROOT%{_mandir}/man1
@@ -54,6 +53,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*.1*
 %dir %{py_sitescriptdir}/%{module}
 %{py_sitescriptdir}/%{module}/*.py[co]
+%dir %{py_sitescriptdir}/%{module}/utils
+%{py_sitescriptdir}/%{module}/utils/*.py[co]
+%dir %{py_sitescriptdir}/%{module}/utils/rst
+%{py_sitescriptdir}/%{module}/utils/rst/*.py[co]
 %if "%{py_ver}" > "2.4"
 %{py_sitescriptdir}/%{module}-%{version}-*.egg-info
 %endif
