@@ -1,13 +1,13 @@
 %define 	module	seqdiag
 Summary:	seqkdiag generate sequence-diagram image file from spec-text file
 Name:		python-%{module}
-Version:	0.7.1
+Version:	0.7.2
 Release:	1
 License:	Apache v2.0
 Group:		Development/Languages
 URL:		http://blockdiag.com/en/seqdiag/index.html
 Source0:	http://pypi.python.org/packages/source/s/%{module}/%{module}-%{version}.tar.gz
-# Source0-md5:	81e0a551675354b6a511f5f23b661dce
+# Source0-md5:	428341e76c3434ba3a87a063ca5fb721
 BuildRequires:	rpmbuild(macros) >= 1.219
 BuildRequires:	sed >= 4.0
 Requires:	python-blockdiag >= 1.1.0
