@@ -8,7 +8,7 @@ Group:		Development/Languages
 URL:		http://blockdiag.com/en/seqdiag/index.html
 Source0:	http://pypi.python.org/packages/source/s/%{module}/%{module}-%{version}.tar.gz
 # Source0-md5:	428341e76c3434ba3a87a063ca5fb721
-BuildRequires:	rpmbuild(macros) >= 1.219
+BuildRequires:	rpmbuild(macros) >= 1.710
 BuildRequires:	sed >= 4.0
 Requires:	python-blockdiag >= 1.1.0
 BuildArch:	noarch
