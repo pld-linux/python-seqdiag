@@ -2,7 +2,7 @@
 Summary:	seqkdiag generate sequence-diagram image file from spec-text file
 Name:		python-%{module}
 Version:	0.7.2
-Release:	2
+Release:	3
 License:	Apache v2.0
 Group:		Development/Languages
 URL:		http://blockdiag.com/en/seqdiag/index.html
